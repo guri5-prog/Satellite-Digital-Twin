@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 DB_CONFIG = {
     "dbname": "satellite_db",
     "user": "postgres",
-    "password": "gshekhar81461",
+    "password": "sanjibanipaul",
     "host": "localhost",
     "port": "5432"
 }

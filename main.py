@@ -2,16 +2,17 @@ import redis
 import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime
+from skyfield.api import EarthSatellite, load
 
-
-CACHE_KEY = "satellite_positions_v2" # Same as in our worker
-try:
-    redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
-    redis_client.ping()
-    print("API: Successfully connected to Redis cache.")
-except redis.exceptions.ConnectionError as e:
-    print(f"API Error: Could not connect to Redis: {e}")
-    redis_client = None
+# --- Database Configuration ---
+DB_CONFIG = {
+    "dbname": "satellite_db",
+    "user": "postgres",
+    "password": "",
+    "host": "localhost",
+    "port": "5432"
+}
 
 # --- FastAPI Application ---
 app = FastAPI(
