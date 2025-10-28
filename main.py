@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-# --- Cache Configuration ---
+
 CACHE_KEY = "satellite_positions_v2" # Same as in our worker
 try:
     redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
